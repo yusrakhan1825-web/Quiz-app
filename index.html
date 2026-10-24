@@ -3,13 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-  <div id="quizBox"></div>
 
-  <button id="nextBtn">Next</button>
-   
+    <title>Quiz Master Pro</title>
+
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Advanced UI & Interaction Styles -->
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            background-color: transparent !important;
+        }
+
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+            background: #0d0d13 !important;
+        }
+
+        .quiz-title {
+            color: #ffffff !important;
+            text-shadow: 0 4px 15px rgba(255,255,255,0.15);
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+        
+        .quiz-subtitle, .footer-text {
+            color: #b3b3cc !important;
+        }
+
+        /* Translucent Glassmorphism Quiz Card */
+        .quiz-card {
+            background: rgba(255, 255, 255, 0.08) !important;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.12) !important;
+            transition: all 0.4s ease;
+        }
+
+        /* Dynamic Feedback Classes */
+        .correct-pulse {
+            border-color: #28a745 !important;
+            box-shadow: 0 0 25px rgba(40, 167, 69, 0.6) !important;
+            animation: pulse-green 0.5s ease-in-out;
+        }
+
+        .wrong-pulse {
+            border-color: #dc3545 !important;
+            box-shadow: 0 0 25px rgba(220, 53, 69, 0.6) !important;
+            animation: shake-red 0.4s ease-in-out;
+        }
+
+        @keyframes pulse-green {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes shake-red {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-8px); }
+            40%, 80% { transform: translateX(8px); }
+        }
+
+        /* Fixed Question Typography to Light/White */
+        #quizBox h1 {
+            color: #ffffff !important;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        /* Fixed Radio Option Container to Transparent-Light Look */
+        .option-container {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.07);
+            padding: 12px 18px;
+            margin-bottom: 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #f8f9fa !important; /* Light text fixed */
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+
+        .option-container:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(4px);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .option-container input {
+            margin-right: 12px;
+            transform: scale(1.2);
+            accent-color: #08d9f5;
+        }
+
+        /* Modernized Next Button */
+        .next-btn {
+            background: linear-gradient(45deg, #0d6efd, #0056b3);
+            color: white !important;
+            font-weight: 600;
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .next-btn:disabled {
+            background: rgba(255, 255, 255, 0.1) !important;
+            color: rgba(255, 255, 255, 0.3) !important;
+            box-shadow: none !important;
+            border: none !important;
+        }
+
+        .next-btn:not(:disabled) {
+            box-shadow: 0 4px 15px rgba(13, 110, 253, 0.4);
+        }
+
+        /* End Screen Design Light Text Fixes */
+        .end-screen {
+            text-align: center;
+            padding: 20px 10px;
+        }
+        .end-screen h2, .end-screen h4 {
+            color: #ffffff !important;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        }
+        .end-screen hr {
+            border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+        }
+        .appreciation-badge {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            animation: bounce 1s infinite alternate;
+        }
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="bg-canvas"></canvas>
+
+    <div class="container py-5">
+
+        <div class="text-center mb-4">
+            <h1 class="quiz-title">Web Development Quiz</h1>
+            <p class="quiz-subtitle">Challenge your knowledge!</p>
+        </div>
+
+        <div class="card quiz-card shadow rounded-4 p-4 mx-auto" style="max-width: 550px; position: relative; z-index: 5;">
+            <div id="quizBox"></div>
+            <button id="nextBtn" class="btn next-btn w-100 mt-4" disabled>
+                Next Question →
+            </button>
+        </div>
+
+        <p class="footer-text text-center mt-4">Design by Yusra</p>
+    </div>
+
     <script src="app.js"></script>
+    <script src="bootstrap.js"></script>
 </body>
 </html>

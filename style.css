@@ -1,0 +1,332 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --bg: #041522;
+    --card: rgba(5, 28, 44, 0.88);
+    --cyan: #08d9f5;
+    --blue: #168fd2;
+    --text: #f5f9ff;
+    --muted: #9dbbce;
+    --border: rgba(22, 201, 243, 0.55);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(ellipse at 50% 30%, #10425c 0%, transparent 42%),
+        radial-gradient(ellipse at 0% 75%, #07506c55, transparent 35%),
+        radial-gradient(ellipse at 100% 90%, #007ca855, transparent 30%),
+        var(--bg);
+    overflow-x: hidden;
+}
+
+/* Main container */
+.container {
+    width: 100%;
+    max-width: 1050px !important;
+    padding: 45px 24px !important;
+    position: relative;
+    z-index: 1;
+}
+
+/* Header */
+.quiz-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.quiz-icon {
+    width: 65px;
+    height: 65px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px;
+    border: 1px solid var(--cyan);
+    border-radius: 20px;
+    color: var(--cyan);
+    font-size: 30px;
+    background: linear-gradient(135deg, #0a354b, #061b2b);
+    box-shadow:
+        0 0 20px #08d9f533,
+        inset 0 0 15px #08d9f51a;
+}
+
+.quiz-header h1,
+.quiz-title {
+    font-size: clamp(30px, 5vw, 44px);
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: white;
+}
+
+.quiz-header h1 span {
+    color: var(--cyan);
+}
+
+.quiz-header p,
+.quiz-subtitle {
+    color: var(--muted);
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+/* Quiz glass card */
+.quiz-card {
+    width: 100%;
+    max-width: 850px !important;
+    margin: auto;
+    color: var(--text) !important;
+    background:
+        linear-gradient(145deg,
+        rgba(9, 43, 62, 0.94),
+        rgba(3, 22, 36, 0.97)) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 30px !important;
+    box-shadow:
+        0 0 30px #00c8ff14,
+        0 20px 65px #0007,
+        inset 0 0 35px #008ab014 !important;
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+    overflow: hidden;
+}
+
+.quiz-card .card-body {
+    padding: clamp(22px, 5vw, 48px) !important;
+}
+
+/* Small top labels */
+.quiz-badge {
+    background: #07516a !important;
+    border: 1px solid #0c7e9b;
+    color: #50e8fa !important;
+    border-radius: 30px;
+    padding: 10px 16px;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.quiz-label {
+    color: #d6e7f4;
+    font-size: 13px;
+}
+
+/* Question text */
+#quizBox h1 {
+    color: var(--text);
+    font-size: clamp(21px, 3.5vw, 32px);
+    font-weight: 700;
+    line-height: 1.55;
+    margin: 25px 0 30px;
+}
+
+/* Answer options */
+#quizBox label {
+    display: block;
+    width: 100%;
+    margin: 14px 0;
+    padding: 17px 22px;
+    color: #edf7ff;
+    background: linear-gradient(110deg, #0c2c40, #153c53);
+    border: 1px solid #18729a;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.25s ease,
+                border-color 0.25s ease,
+                box-shadow 0.25s ease,
+                transform 0.25s ease;
+}
+
+#quizBox label:hover {
+    background: linear-gradient(110deg, #104660, #17617b);
+    border-color: #12d5f3;
+    box-shadow: 0 0 18px #00d9ff1c;
+    transform: translateY(-2px);
+}
+
+/* Radio inputs */
+#quizBox input[type="radio"] {
+    accent-color: var(--cyan);
+    cursor: pointer;
+    margin-right: 12px;
+    transform: scale(1.2);
+}
+
+/* Selected option */
+#quizBox input[type="radio"]:checked + label {
+    background: linear-gradient(110deg, #07516f, #087fa1);
+    border: 2px solid var(--cyan);
+    box-shadow:
+        0 0 20px #00d9ff30,
+        inset 0 0 15px #00d9ff15;
+}
+
+/* Next button */
+.next-btn {
+    display: block;
+    width: 100%;
+    margin-top: 30px;
+    padding: 17px 22px;
+    border: 1px solid #75f1ff !important;
+    border-radius: 50px !important;
+    background: linear-gradient(100deg, #09d8ed, #139ee8) !important;
+    color: #042033 !important;
+    font-size: 16px;
+    font-weight: 800;
+    box-shadow:
+        0 0 25px #00cfff30,
+        inset 0 1px 0 #ffffff66;
+    transition: 0.25s ease;
+}
+
+.next-btn:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px #00cfff55;
+    filter: brightness(1.12);
+}
+
+.next-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+/* Footer */
+.footer-text {
+    color: #a2c5d7;
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin-top: 28px;
+}
+
+/* Quiz completed screen */
+#quizBox h2 {
+    color: var(--cyan);
+    font-size: clamp(26px, 5vw, 38px);
+    font-weight: 800;
+    text-align: center;
+    margin: 20px 0;
+}
+
+#quizBox p {
+    color: #dceaf5;
+    text-align: center;
+    line-height: 1.8;
+}
+
+/* Responsive design */
+@media (max-width: 576px) {
+    .container {
+        padding: 25px 14px !important;
+    }
+
+    .quiz-card {
+        border-radius: 22px !important;
+    }
+
+    .quiz-card .card-body {
+        padding: 23px !important;
+    }
+
+    #quizBox h1 {
+        font-size: 21px;
+    }
+
+    #quizBox label {
+        padding: 14px 17px;
+        font-size: 13px;
+    }
+
+    .next-btn {
+        padding: 14px;
+        font-size: 14px;
+    }
+}
+
+html,
+body {
+    min-height: 100%;
+    background-color: #041522 !important;
+}
+
+body {
+    color: #f5f9ff !important;
+}
+
+/* Main quiz card */
+.card.quiz-card,
+.quiz-card {
+    background: linear-gradient(145deg, #092b3e, #031624) !important;
+    color: #f5f9ff !important;
+    border: 1px solid rgba(22, 201, 243, 0.55) !important;
+    border-radius: 25px !important;
+    box-shadow: 0 0 30px #00cfff20 !important;
+}
+
+/* Card ke andar ka content */
+.quiz-card .card-body {
+    background: transparent !important;
+}
+
+/* Question heading */
+#quizBox h1 {
+    color: #cbd3df !important;
+}
+
+/* Answers */
+#quizBox label {
+    background: linear-gradient(110deg, #0c2c40, #153c53) !important;
+    color: #ffffff !important;
+    border: 1px solid #18729a !important;
+}
+
+/* Selected answer */
+#quizBox input[type="radio"]:checked + label {
+    background: linear-gradient(110deg, #07516f, #087fa1) !important;
+    border: 2px solid #08d9f5 !important;
+}
+
+/* Next button */
+#nextBtn {
+    background: linear-gradient(100deg, #09d8ed, #139ee8) !important;
+    color: #042033 !important;
+    border: 1px solid #75f1ff !important;
+    border-radius: 50px !important;
+    font-weight: 700 !important;
+}
+
+#nextBtn:disabled {
+    opacity: 0.5;
+}
+/* ye canvas ka kam ha */
+#bg-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Isse background peeche chala jayega */
+    pointer-events: none; /* Taake aap quiz ke buttons par click kar sakein */
+    background: #0d0d13; /* Dark modern background color */
+}
+
+/* Aapki quiz app ka main container thoda transparent hona chahiye taake background dikhe */
+.quiz-container {
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.1); /* Glassmorphism effect */
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    /* Baaki aapki apni styling */
+}
