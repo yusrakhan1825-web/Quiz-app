@@ -77,7 +77,7 @@ let nextBtn = document.querySelector("#nextBtn");
 let quizCard = document.querySelector(".quiz-card");
 let questionNo = 0;
 let score = 0;
-let isCelebrationActive = false; // Confetti dynamic tracker
+let isCelebrationActive = false; 
 
 // Sound variables with high-availability open-source links
 const correctSound = new Audio("https://jsdelivr.net");
@@ -164,7 +164,7 @@ const showQuestion = () => {
       feedbackEmoji = "📚";
     }
 
-    // Fixed text colors to #ffffff so they are clearly visible on dark card
+    // Fixed text colors so they are clearly visible on dark card
     quizBox.innerHTML = `
           <div class="end-screen">
               <div class="appreciation-badge">${feedbackEmoji}</div>
@@ -193,9 +193,7 @@ nextBtn.addEventListener("click", () => {
 
 showQuestion();
 
-// ==========================================
 // BACKGROUND CANVAS MESH & CONFETTI ENGINE
-// ==========================================
 const canvas = document.getElementById("bg-canvas");
 if (canvas) {
   const ctx = canvas.getContext("2d");
